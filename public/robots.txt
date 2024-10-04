@@ -1,0 +1,25 @@
+User-agent: 8LEGS
+User-agent: AhrefsBot
+User-agent: AspiegelBot
+User-agent: BLEXBot
+User-agent: Barkrowler
+User-agent: DotBot
+User-agent: MJ12bot
+User-agent: MauiBot
+User-agent: Nimbostratus-Bot
+User-agent: PetalBot
+User-agent: SemrushBot
+User-agent: SeznamBot
+User-agent: Sogou
+User-agent: serpstatbot
+User-agent: trendiction
+User-agent: TextBulkerBot
+Crawl-delay: 180
+Disallow: /admin
+User-agent: *
+Disallow: /admin
+
+Allow: /
+
+Host: essence-moins-cher.com
+Sitemap: https://essence-moins-cher.com/sitemap.xml

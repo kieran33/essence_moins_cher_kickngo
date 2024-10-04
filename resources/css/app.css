@@ -1,0 +1,4 @@
+.category-img {
+    height: 150px !important; /* Remplacez par la hauteur que vous voulez */
+    object-fit: cover !important; /* Cela permet de maintenir l'aspect de l'image */
+}
