@@ -19,7 +19,7 @@
   <div class="container">
       <div class="row">
           <div class="col-12 text-center text-md-start mb-3 mb-md-0">
-              <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Essence moins cher</a>, Tout droit réservé.</span>
+              <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Station pas cher</a>, Tout droit réservé.</span>
           </div>
       </div>
   </div>

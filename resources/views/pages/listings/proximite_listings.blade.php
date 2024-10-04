@@ -183,19 +183,19 @@
                     return station;
                 });
 
-                const resultats_change = JSON.stringify(resultats);
+                const resultats_string = JSON.stringify(resultats);
 
-                const json_parse = JSON.parse(resultats_change);
+                const resultats_json = JSON.parse(resultats_string);
 
-                let tableau_horaire_station2 = [];
+                let tableau_horaire_station = [];
 
-                for(let i=0; i<=json_parse[1].length; i++){
-                    if(json_parse[1][i].geo_point !== null && json_parse[1][i].geo_point !== undefined)
+                for(let i=0; i<=resultats_json[1].length; i++){
+                    if(resultats_json[1][i].geo_point !== null && resultats_json[1][i].geo_point !== undefined)
                     {
-                        if ((json_parse[1][i].geo_point.lat !== null && json_parse[1][i].geo_point.lat !== undefined) 
-                        && (json_parse[1][i].geo_point.lon !== null && json_parse[1][i].geo_point.lon !== undefined)) 
+                        if ((resultats_json[1][i].geo_point.lat !== null && resultats_json[1][i].geo_point.lat !== undefined) 
+                        && (resultats_json[1][i].geo_point.lon !== null && resultats_json[1][i].geo_point.lon !== undefined)) 
                         {
-                            liste_marker.push(L.marker([json_parse[1][i].geo_point.lat, json_parse[1][i].geo_point.lon]).addTo(map).bindTooltip(json_parse[1][i].name).openTooltip());
+                            liste_marker.push(L.marker([resultats_json[1][i].geo_point.lat, resultats_json[1][i].geo_point.lon]).addTo(map).bindTooltip(resultats_json[1][i].name).openTooltip());
 
                             const div_liste_services = document.getElementById('liste_services');
 
@@ -216,16 +216,16 @@
                                         div_station_header_texte.setAttribute('id', 'div_station_header');
 
                                         const titre_station_marque = document.createElement('h5');
-                                        titre_station_marque.innerHTML = json_parse[1][i].brand;
+                                        titre_station_marque.innerHTML = resultats_json[1][i].brand;
                                         titre_station_marque.classList.add('element_card_station');
                                         titre_station_marque.setAttribute('id', 'titre_station_marque');
 
                                         const titre_station_nom = document.createElement('h5');
-                                        titre_station_nom.innerHTML = json_parse[1][i].name;
+                                        titre_station_nom.innerHTML = resultats_json[1][i].name;
                                         titre_station_nom.classList.add('element_card_station');
 
                                         const titre_station_adresse = document.createElement('p');
-                                        titre_station_adresse.innerHTML = json_parse[1][i].address + ' ' + json_parse[1][i].cp + ' ' + json_parse[1][i].city;
+                                        titre_station_adresse.innerHTML = resultats_json[1][i].address + ' ' + resultats_json[1][i].cp + ' ' + resultats_json[1][i].city;
                                         titre_station_adresse.classList.add('element_card_station');
 
                                         const container_station = document.getElementById('container_station');
@@ -262,8 +262,8 @@
 
                                         const div_prix_gazole = document.createElement('div');
                                         div_prix_gazole.classList.add('price-cell', 'price', 'element_card_station');
-                                        const prix_gazole = json_parse[1][i].price_gazole * 1000
-                                        if(json_parse[1][i].price_gazole !== "" && json_parse[1][i].price_gazole !== null && json_parse[1][i].price_gazole !== undefined)  
+                                        const prix_gazole = resultats_json[1][i].price_gazole * 1000
+                                        if(resultats_json[1][i].price_gazole !== "" && resultats_json[1][i].price_gazole !== null && resultats_json[1][i].price_gazole !== undefined)  
                                         {
                                             div_prix_gazole.innerHTML = prix_gazole.toFixed(3) + "€";
                                         }
@@ -273,8 +273,8 @@
 
                                         const div_prix_sp95 = document.createElement('div');
                                         div_prix_sp95.classList.add('price-cell', 'price', 'element_card_station');
-                                        const prix_sp95 = json_parse[1][i].price_sp95 * 1000
-                                        if(json_parse[1][i].price_sp95 !== "" && json_parse[1][i].price_sp95 !== null && json_parse[1][i].price_sp95 !== undefined)  
+                                        const prix_sp95 = resultats_json[1][i].price_sp95 * 1000
+                                        if(resultats_json[1][i].price_sp95 !== "" && resultats_json[1][i].price_sp95 !== null && resultats_json[1][i].price_sp95 !== undefined)  
                                         {
                                             div_prix_sp95.innerHTML = prix_sp95.toFixed(3) + "€";
                                         }
@@ -284,8 +284,8 @@
 
                                         const div_prix_sp98 = document.createElement('div');
                                         div_prix_sp98.classList.add('price-cell', 'price', 'element_card_station');
-                                        const prix_sp98 = json_parse[1][i].price_sp98 * 1000
-                                        if(json_parse[1][i].price_sp98 !== "" && json_parse[1][i].price_sp98 !== null && json_parse[1][i].price_sp98 !== undefined)  
+                                        const prix_sp98 = resultats_json[1][i].price_sp98 * 1000
+                                        if(resultats_json[1][i].price_sp98 !== "" && resultats_json[1][i].price_sp98 !== null && resultats_json[1][i].price_sp98 !== undefined)  
                                         {
                                             div_prix_sp98.innerHTML = prix_sp98.toFixed(3) + "€";
                                         }
@@ -295,8 +295,8 @@
 
                                         const div_prix_gplc= document.createElement('div');
                                         div_prix_gplc.classList.add('price-cell', 'price', 'element_card_station');
-                                        const prix_gplc = json_parse[1][i].price_gplc * 1000
-                                        if(json_parse[1][i].price_gplc !== "" && json_parse[1][i].price_gplc !== null && json_parse[1][i].price_gplc !== undefined)  
+                                        const prix_gplc = resultats_json[1][i].price_gplc * 1000
+                                        if(resultats_json[1][i].price_gplc !== "" && resultats_json[1][i].price_gplc !== null && resultats_json[1][i].price_gplc !== undefined)  
                                         {
                                             div_prix_gplc.innerHTML = prix_gplc.toFixed(3) + "€";
                                         }
@@ -306,8 +306,8 @@
 
                                         const div_prix_e10 = document.createElement('div');
                                         div_prix_e10.classList.add('price-cell', 'price', 'element_card_station');
-                                        const prix_e10 = json_parse[1][i].price_e10 * 1000
-                                        if(json_parse[1][i].price_e10 !== "" && json_parse[1][i].price_e10 !== null && json_parse[1][i].price_e10 !== undefined)  
+                                        const prix_e10 = resultats_json[1][i].price_e10 * 1000
+                                        if(resultats_json[1][i].price_e10 !== "" && resultats_json[1][i].price_e10 !== null && resultats_json[1][i].price_e10 !== undefined)  
                                         {
                                             div_prix_e10.innerHTML = prix_e10.toFixed(3) + "€";
                                         }
@@ -317,8 +317,8 @@
 
                                         const div_prix_e85 = document.createElement('div');
                                         div_prix_e85.classList.add('price-cell', 'price', 'element_card_station');
-                                        const prix_e85 = json_parse[1][i].price_e85 * 1000
-                                        if(json_parse[1][i].price_e85 !== "" && json_parse[1][i].price_e85 !== null && json_parse[1][i].price_e85 !== undefined)  
+                                        const prix_e85 = resultats_json[1][i].price_e85 * 1000
+                                        if(resultats_json[1][i].price_e85 !== "" && resultats_json[1][i].price_e85 !== null && resultats_json[1][i].price_e85 !== undefined)  
                                         {
                                             div_prix_e85.innerHTML = prix_e85.toFixed(3) + "€";
                                         }
@@ -374,36 +374,41 @@
 
                                         let horaireHTML = '';
 
-                                        if(json_parse[1][i].services === null || json_parse[1][i].services === undefined){
+                                        if(resultats_json[1][i].services === null || resultats_json[1][i].services === undefined){
                                             serviceHTML += `<p>Pas de services</p>`
                                             }else{
-                                                for(let j = 0; j<json_parse[1][i].services.length; j++){
-                                                    serviceHTML += `<p>${json_parse[1][i].services[j]}</p>`
+                                                for(let j = 0; j<resultats_json[1][i].services.length; j++){
+                                                    serviceHTML += `<p>${resultats_json[1][i].services[j]}</p>`
                                                 }
                                             }
 
-                                            let horaire_station_tableau = Object.entries(JSON.parse(json_parse[1][2].timetable)).map(horaire => {
+                                            tableau_horaire_station.push(JSON.parse(resultats_json[1][i].timetable));
+
+                                            const tableau_station_filtrer = tableau_horaire_station.filter(horaire => horaire !== null)
+
+                                            //console.log('tableau filtrer', tableau_station_filtrer)
+
+                                            let horaire_station_tableau_filtrer = Object.entries(tableau_station_filtrer).map(horaire => {
                                                 return horaire;
                                             });
 
-                                            tableau_horaire_station2.push(JSON.parse(json_parse[1][i].timetable));
+                                            console.log('tableau station filtrer', horaire_station_tableau_filtrer[0])
 
-                                            console.log('tableau2', tableau_horaire_station2)
-
-                                            const tableau_station_filtrer = tableau_horaire_station2.filter(horaire => horaire !== null)
-
-                                            console.log('tableau filtrer', tableau_station_filtrer)
-
-                                            let horaire_station_tableau3 = Object.entries(tableau_station_filtrer).map(horaire => {
-                                                return horaire;
+                                            horaire_station_tableau_filtrer.forEach((station_planning) => {
+                                                console.log('semaine horaire', station_planning[1]['Dimanche']);                      
                                             });
 
-                                            console.log('tableau3', horaire_station_tableau3[0])
+                                            const jour_semaine = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 
-                                            horaire_station_tableau3.forEach((station_planning) => {
-                                                console.log('semaine', station_planning[1]);
-                                                
-                                            });
+                                            for (let m = 0; m<jour_semaine.length; m++){
+                                                horaire_station_tableau_filtrer.forEach((station_planning) => {
+                                                    if(station_planning[1][jour_semaine[m]].ouverture && station_planning[1][jour_semaine[m]].fermeture){
+                                                        horaireHTML += `<p>${station_planning[1][jour_semaine[m]].ouverture} - ${station_planning[1][jour_semaine[m]].fermeture}</p>` 
+                                                    } else {
+                                                        horaireHTML += `<p>Horaires indisponible</p>`
+                                                    }                                        
+                                                });
+                                            }
 
 
 
@@ -417,13 +422,13 @@
                                                 }*/
                                             //});
 
-                                            //let horaire_station_tableau2 = Object.entries(JSON.parse(json_parse[1][i].timetable));
+                                            //let horaire_station_tableau2 = Object.entries(JSON.parse(resultats_json[1][i].timetable));
 
                                             /*let horaire_station_tableau2 = 
-                                                if(Object.entries(JSON.parse(json_parse[1][i].timetable)) === null || Object.entries(JSON.parse(json_parse[1][i].timetable)) === undefined){
+                                                if(Object.entries(JSON.parse(resultats_json[1][i].timetable)) === null || Object.entries(JSON.parse(resultats_json[1][i].timetable)) === undefined){
                                                     console.log('np horaire');
                                                 } else{
-                                                    Object.entries(JSON.parse(json_parse[1][i].timetable)).map(horaire => {
+                                                    Object.entries(JSON.parse(resultats_json[1][i].timetable)).map(horaire => {
                                                     return horaire;
                                                     });
                                                 }*/
@@ -548,17 +553,17 @@
                                 return station;
                             });
 
-                            const resultats_change = JSON.stringify(resultats);
+                            const resultats_string = JSON.stringify(resultats);
 
-                            const json_parse = JSON.parse(resultats_change);
+                            const resultats_json = JSON.parse(resultats_string);
 
-                            for(let i=0; i<=json_parse[1].length; i++){
-                                if(json_parse[1][i].geo_point !== null && json_parse[1][i].geo_point !== undefined)
+                            for(let i=0; i<=resultats_json[1].length; i++){
+                                if(resultats_json[1][i].geo_point !== null && resultats_json[1][i].geo_point !== undefined)
                                 {
-                                    if ((json_parse[1][i].geo_point.lat !== null && json_parse[1][i].geo_point.lat !== undefined) 
-                                    && (json_parse[1][i].geo_point.lon !== null && json_parse[1][i].geo_point.lon !== undefined)) 
+                                    if ((resultats_json[1][i].geo_point.lat !== null && resultats_json[1][i].geo_point.lat !== undefined) 
+                                    && (resultats_json[1][i].geo_point.lon !== null && resultats_json[1][i].geo_point.lon !== undefined)) 
                                     {
-                                        L.marker([json_parse[1][i].geo_point.lat, json_parse[1][i].geo_point.lon]).addTo(map).bindTooltip(json_parse[1][i].name).openTooltip();
+                                        L.marker([resultats_json[1][i].geo_point.lat, resultats_json[1][i].geo_point.lon]).addTo(map).bindTooltip(resultats_json[1][i].name).openTooltip();
 
                                         const div_liste_services = document.getElementById('liste_services');
 
@@ -576,13 +581,13 @@
                                         const div_station_header_texte = document.createElement('div');
 
                                         const titre_station_marque = document.createElement('h5');
-                                        titre_station_marque.innerHTML = json_parse[1][i].brand;
+                                        titre_station_marque.innerHTML = resultats_json[1][i].brand;
 
                                         const titre_station_nom = document.createElement('h5');
-                                        titre_station_nom.innerHTML = json_parse[1][i].name;
+                                        titre_station_nom.innerHTML = resultats_json[1][i].name;
 
                                         const titre_station_adresse = document.createElement('p');
-                                        titre_station_adresse.innerHTML = json_parse[1][i].address + ' ' + json_parse[1][i].cp + ' ' + json_parse[1][i].city;
+                                        titre_station_adresse.innerHTML = resultats_json[1][i].address + ' ' + resultats_json[1][i].cp + ' ' + resultats_json[1][i].city;
 
                                         const container_station = document.getElementById('container_station');
 
@@ -618,8 +623,8 @@
 
                                         const div_prix_gazole = document.createElement('div');
                                         div_prix_gazole.classList.add('price-cell', 'price');
-                                        const prix_gazole = json_parse[1][i].price_gazole * 1000
-                                        if(json_parse[1][i].price_gazole !== "" && json_parse[1][i].price_gazole !== null && json_parse[1][i].price_gazole !== undefined)  
+                                        const prix_gazole = resultats_json[1][i].price_gazole * 1000
+                                        if(resultats_json[1][i].price_gazole !== "" && resultats_json[1][i].price_gazole !== null && resultats_json[1][i].price_gazole !== undefined)  
                                         {
                                             div_prix_gazole.innerHTML = prix_gazole.toFixed(3) + "€";
                                         }
@@ -629,8 +634,8 @@
 
                                         const div_prix_sp95 = document.createElement('div');
                                         div_prix_sp95.classList.add('price-cell', 'price');
-                                        const prix_sp95 = json_parse[1][i].price_sp95 * 1000
-                                        if(json_parse[1][i].price_sp95 !== "" && json_parse[1][i].price_sp95 !== null && json_parse[1][i].price_sp95 !== undefined)  
+                                        const prix_sp95 = resultats_json[1][i].price_sp95 * 1000
+                                        if(resultats_json[1][i].price_sp95 !== "" && resultats_json[1][i].price_sp95 !== null && resultats_json[1][i].price_sp95 !== undefined)  
                                         {
                                             div_prix_sp95.innerHTML = prix_sp95.toFixed(3) + "€";
                                         }
@@ -640,8 +645,8 @@
 
                                         const div_prix_sp98 = document.createElement('div');
                                         div_prix_sp98.classList.add('price-cell', 'price');
-                                        const prix_sp98 = json_parse[1][i].price_sp98 * 1000
-                                        if(json_parse[1][i].price_sp98 !== "" && json_parse[1][i].price_sp98 !== null && json_parse[1][i].price_sp98 !== undefined)  
+                                        const prix_sp98 = resultats_json[1][i].price_sp98 * 1000
+                                        if(resultats_json[1][i].price_sp98 !== "" && resultats_json[1][i].price_sp98 !== null && resultats_json[1][i].price_sp98 !== undefined)  
                                         {
                                             div_prix_sp98.innerHTML = prix_sp98.toFixed(3) + "€";
                                         }
@@ -651,8 +656,8 @@
 
                                         const div_prix_gplc= document.createElement('div');
                                         div_prix_gplc.classList.add('price-cell', 'price');
-                                        const prix_gplc = json_parse[1][i].price_gplc * 1000
-                                        if(json_parse[1][i].price_gplc !== "" && json_parse[1][i].price_gplc !== null && json_parse[1][i].price_gplc !== undefined)  
+                                        const prix_gplc = resultats_json[1][i].price_gplc * 1000
+                                        if(resultats_json[1][i].price_gplc !== "" && resultats_json[1][i].price_gplc !== null && resultats_json[1][i].price_gplc !== undefined)  
                                         {
                                             div_prix_gplc.innerHTML = prix_gplc.toFixed(3) + "€";
                                         }
@@ -662,8 +667,8 @@
 
                                         const div_prix_e10 = document.createElement('div');
                                         div_prix_e10.classList.add('price-cell', 'price');
-                                        const prix_e10 = json_parse[1][i].price_e10 * 1000
-                                        if(json_parse[1][i].price_e10 !== "" && json_parse[1][i].price_e10 !== null && json_parse[1][i].price_e10 !== undefined)  
+                                        const prix_e10 = resultats_json[1][i].price_e10 * 1000
+                                        if(resultats_json[1][i].price_e10 !== "" && resultats_json[1][i].price_e10 !== null && resultats_json[1][i].price_e10 !== undefined)  
                                         {
                                             div_prix_e10.innerHTML = prix_e10.toFixed(3) + "€";
                                         }
@@ -673,8 +678,8 @@
 
                                         const div_prix_e85 = document.createElement('div');
                                         div_prix_e85.classList.add('price-cell', 'price');
-                                        const prix_e85 = json_parse[1][i].price_e85 * 1000
-                                        if(json_parse[1][i].price_e85 !== "" && json_parse[1][i].price_e85 !== null && json_parse[1][i].price_e85 !== undefined)  
+                                        const prix_e85 = resultats_json[1][i].price_e85 * 1000
+                                        if(resultats_json[1][i].price_e85 !== "" && resultats_json[1][i].price_e85 !== null && resultats_json[1][i].price_e85 !== undefined)  
                                         {
                                             div_prix_e85.innerHTML = prix_e85.toFixed(3) + "€";
                                         }
@@ -728,11 +733,11 @@
 
                                         let serviceHTML = '';
 
-                                        if(json_parse[1][i].services === null || json_parse[1][i].services === undefined){
+                                        if(resultats_json[1][i].services === null || resultats_json[1][i].services === undefined){
                                             serviceHTML += `<p>Pas de services</p>`
                                         }else{
-                                            for(let j = 0; j<json_parse[1][i].services.length; j++){
-                                                serviceHTML += `<p>${json_parse[1][i].services[j]}</p>`
+                                            for(let j = 0; j<resultats_json[1][i].services.length; j++){
+                                                serviceHTML += `<p>${resultats_json[1][i].services[j]}</p>`
                                             }
                                         }
 
@@ -752,7 +757,7 @@
                                                         ${serviceHTML} 
                                                     </div>
                                                     <div>
-                                                        ${json_parse[1][i].timetable} 
+                                                        ${resultats_json[1][i].timetable} 
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -785,7 +790,6 @@
     }
 
     function supprimerElements() {
-        console.log('dans supprimer')
 
         let elements = document.querySelectorAll('.element_card_station');
 
